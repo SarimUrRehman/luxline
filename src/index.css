@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", Georgia, serif;
+  --font-label: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --color-obsidian: #0A0A0A;
+  --color-charcoal: #141414;
+  --color-charcoal-light: #1C1C1C;
+  --color-ivory: #FAF7F0;
+  --color-ivory-surface: #F3EFE4;
+  --color-gold: #C9A24B;
+  --color-champagne: #E6CF8F;
+  --color-bronze: #9A7424;
+  --color-bronze-text: #7D5B15;
+  --color-warm-grey: #B3AEA3;
+  --color-ink: #1A1A1A;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  /* Accessible focus ring across dark & light sections */
+  :focus-visible {
+    outline: 2px solid #C9A24B;
+    outline-offset: 3px;
+  }
+}
+
+/* Polished metallic gold gradient surfaces */
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #E6CF8F 0%, #C9A24B 52%, #B28830 100%);
+}
+
+.gold-gradient-bg:hover {
+  background: linear-gradient(135deg, #EFE0B0 0%, #D5B05A 52%, #C9A24B 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F1DFA9 0%, #C9A24B 55%, #9A7424 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-hairline-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 162, 75, 0.35) 20%,
+    rgba(230, 207, 143, 0.7) 50%,
+    rgba(201, 162, 75, 0.35) 80%,
+    transparent 100%
+  );
+}
+
+/* Hero Coupe Line-Art Stroke Draw & Subtle Light Sweep */
+@keyframes luxDrawLine {
+  0% {
+    stroke-dashoffset: 1400;
+    opacity: 0.25;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes luxLightSweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.45;
+  }
+  55% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes luxFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-coupe-stroke {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: luxDrawLine 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.hero-coupe-stroke-secondary {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: luxDrawLine 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+}
+
+.hero-light-sweep {
+  animation: luxLightSweep 6.5s cubic-bezier(0.4, 0, 0.2, 1) 2.1s infinite;
+}
+
+.animate-fade-up {
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Respect user reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-coupe-stroke,
+  .hero-coupe-stroke-secondary {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .hero-light-sweep,
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "LuxLine Mobile Detailing",
+  "description": "Luxury mobile car detailing across Sydney, Australia. Interior, exterior and full details delivered to your home or workplace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
